@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -151,6 +151,88 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-关于深拷贝与浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/22/关于深拷贝与浅拷贝/">关于深拷贝与浅拷贝</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/22/关于深拷贝与浅拷贝/" class="archive-article-date">
+  	<time datetime="2020-09-22T12:57:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前段时间太忙了，没时间写博客，偶尔写的文章都是放在本地，没有上传到git上…</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是在看视频的时候看到老师提到的，顺手记了下来，在了解关于深拷贝与浅拷贝的相关问题前，需要熟悉数据的值类型和引用类型。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>数据的基本类型可以分为两类，一类是值类型，也就是基本数据类型，另一类就是引用类型了。<br>基本数据类型：<code>number，string，boolean，null，undefined，symbol</code><br>引用数据类型：<code>object，array，function</code><br>基本数据类型的数据是保存在栈中的，而引用数据类型在栈中保存的是变量标识符和指针，指针指向堆内存中的该对象。也就是说，数据真实存在于堆内存，而在该数据类型的变量中保存的则是该对象在堆内存中的地址。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>浅拷贝只能用于对象中只包含基本类型的数据，修改其中一个的属性后，相互不影响，当对象中仍然包含对象类型的数据时，则是引用关系，修改会相互影响，所以这种情况需要用到深拷贝。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>那如果我们想对一个新变量进行赋值的时候需要使用一个引用数据类型的变量，该怎么做呢？<br>深拷贝的方法：<br>1.JSON.parse(JSON.stringify(obj))<br>2.递归  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(obj) &#123;</span><br><span class="line">  let objClone = Array.isArray(obj) ? [] : &#123;&#125;;</span><br><span class="line">  if (obj &amp;&amp; typeof obj === &apos;object&apos;) &#123;</span><br><span class="line">    for(let key in obj) &#123;</span><br><span class="line">        if ( obj.hasOwnProperty(key) ) &#123;</span><br><span class="line">          if ( obj[key] &amp;&amp; typeof obj[key] === &apos;object&apos;) &#123;</span><br><span class="line">            objClone[key] = deepClone(obj[key]);   --------- 递归调用，deepClone()函数的返回值是objClone</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            objClone[key] = obj[key];</span><br><span class="line">          &#125;</span><br><span class="line">         &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  return objClone;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const params = &#123;</span><br><span class="line">  name: &apos;wang&apos;,</span><br><span class="line">  address: &#123;</span><br><span class="line">    city: [&apos;china&apos;, &apos;choing&apos;],</span><br><span class="line">    district: &#123;</span><br><span class="line">      town: &apos;jiazhou&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">const b = deepClone(params);</span><br><span class="line">console.log(b)</span><br></pre></td></tr></table></figure>
+<p>二者缺点：只能拷贝对象和数组，无法拷贝函数，无法拷贝原型链上的属性和方法</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/22/关于深拷贝与浅拷贝/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="[post]-2019年终总结" class="article article-type-[post]  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -795,10 +877,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
@@ -812,6 +890,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -833,13 +915,17 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">感悟</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javaScript</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
