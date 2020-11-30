@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jojoduck.github.io">
   <title>Vue发送请求及使用路由 | JoJoDuck</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="搭建脚手架后边看源码边学习别人的写法….学了挺多的  Vue-Router首先，在vue-cli3 中，需要自己去创建一些文件，例如router目录下的index.js，里面需要先引入vue和vue-router模块，还有需要的组件，这里组件是相对定位，且要加上后缀。引用后还需要use一下router，再将router实例抛出在app.vue中记得使用  渲染路由组件 动态路由参数12xxxx.">
-<meta name="keywords" content="Vue,Axios,Vue-Router,前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue发送请求及使用路由">
-<meta property="og:url" content="https://jojoduck.github.io/2019/08/19/Vue发送请求及使用路由/index.html">
+<meta property="og:url" content="https://jojoduck.github.io/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/index.html">
 <meta property="og:site_name" content="JoJoDuck">
 <meta property="og:description" content="搭建脚手架后边看源码边学习别人的写法….学了挺多的  Vue-Router首先，在vue-cli3 中，需要自己去创建一些文件，例如router目录下的index.js，里面需要先引入vue和vue-router模块，还有需要的组件，这里组件是相对定位，且要加上后缀。引用后还需要use一下router，再将router实例抛出在app.vue中记得使用  渲染路由组件 动态路由参数12xxxx.">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://jojoduck.github.io/2019/08/19/Vue发送请求及使用路由/1-1.png">
-<meta property="og:image" content="https://jojoduck.github.io/2019/08/19/Vue发送请求及使用路由/1-2.png">
-<meta property="og:updated_time" content="2019-08-19T14:07:36.000Z">
+<meta property="og:locale">
+<meta property="og:image" content="https://jojoduck.github.io/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/1-1.png">
+<meta property="og:image" content="https://jojoduck.github.io/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/1-2.png">
+<meta property="article:published_time" content="2019-08-19T10:06:48.000Z">
+<meta property="article:modified_time" content="2019-08-19T14:07:36.000Z">
+<meta property="article:author" content="JoJoDuck">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Axios">
+<meta property="article:tag" content="Vue-Router">
+<meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue发送请求及使用路由">
-<meta name="twitter:description" content="搭建脚手架后边看源码边学习别人的写法….学了挺多的  Vue-Router首先，在vue-cli3 中，需要自己去创建一些文件，例如router目录下的index.js，里面需要先引入vue和vue-router模块，还有需要的组件，这里组件是相对定位，且要加上后缀。引用后还需要use一下router，再将router实例抛出在app.vue中记得使用  渲染路由组件 动态路由参数12xxxx.">
-<meta name="twitter:image" content="https://jojoduck.github.io/2019/08/19/Vue发送请求及使用路由/1-1.png">
+<meta name="twitter:image" content="https://jojoduck.github.io/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/1-1.png">
   
     <link rel="alternative" href="/atom.xml" title="JoJoDuck" type="application/atom+xml">
   
@@ -38,8 +41,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -52,10 +55,8 @@
 			<img src="/images/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">JoJoDuck</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">前端小菜鸟</p>
 		
 
 		<nav class="header-menu">
@@ -110,10 +111,8 @@
 				<img src="/images/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">JoJoDuck</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>前端小菜鸟<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -166,7 +165,7 @@
   
 
         
-        <a href="/2019/08/19/Vue发送请求及使用路由/" class="archive-article-date">
+        <a href="/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/" class="archive-article-date">
   	<time datetime="2019-08-19T10:06:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
 </a>
         
@@ -177,13 +176,13 @@
         <blockquote>
 <p>搭建脚手架后边看源码边学习别人的写法….学了挺多的</p>
 </blockquote>
-<h2 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue-Router"></a>Vue-Router</h2><p>首先，在vue-cli3 中，需要自己去创建一些文件，例如router目录下的index.js，<br>里面需要先引入vue和vue-router模块，还有需要的组件，这里组件是相对定位，且要加上后缀。<br>引用后还需要use一下router，再将router实例抛出<br><img src="/2019/08/19/Vue发送请求及使用路由/1-1.png" alt><br>在app.vue中记得使用 <router-view> 渲染路由组件<br><img src="/2019/08/19/Vue发送请求及使用路由/1-2.png" alt></router-view></p>
-<h2 id="动态路由参数"><a href="#动态路由参数" class="headerlink" title="动态路由参数"></a>动态路由参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xxxx.html/user/1  params	动态路由参数</span><br><span class="line">oooo.html/user?userid=1   	query</span><br></pre></td></tr></table></figure>
-<h4 id="动态路由参数以冒号开头"><a href="#动态路由参数以冒号开头" class="headerlink" title="动态路由参数以冒号开头"></a>动态路由参数以冒号开头</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Path:&apos;/user/:id&apos;, name:&apos;userP&apos;,component:&apos;userParams&apos;</span><br><span class="line">Path:&apos;/user&apos;,name:&apos;userQ&apos;,component:&apos;userquery&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="例如在template中"><a href="#例如在template中" class="headerlink" title="例如在template中"></a>例如在template中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to=&quot;&#123;name:&apos;userP&apos;,params:&#123;id:1&#125;&#125;&quot;&gt;用户1&lt;/router-link&gt;</span><br><span class="line">里面的id对应的是动态路由参数里的那个id</span><br><span class="line">&lt;router-link :to=&quot;&#123;name:&apos;userQ&apos;,query:&#123;userid:1&#125;&#125;&quot;&gt;用户2&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">routes:[&#123;</span><br><span class="line">	path:&apos;/home&apos;,</span><br><span class="line">	name:&apos;home&apos;,</span><br><span class="line">	component:home,</span><br><span class="line">	children:[</span><br><span class="line">&#123;</span><br><span class="line">	Path:&apos;song&apos;,</span><br><span class="line">	Component:song</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">	Path:&apos;movie&apos;,</span><br><span class="line">	Component:movie</span><br><span class="line">&#125;</span><br><span class="line">]	</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
-<h5 id="一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作，-可以使用watch对路由的变化进行。"><a href="#一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作，-可以使用watch对路由的变化进行。" class="headerlink" title="一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作， 可以使用watch对路由的变化进行。"></a>一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作， 可以使用watch对路由的变化进行。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Watch:&#123;</span><br><span class="line">	‘$route’(to,from)&#123;</span><br><span class="line">	This.msg = to.params.id;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="在路由跳转前，-可以使用"><a href="#在路由跳转前，-可以使用" class="headerlink" title="在路由跳转前， 可以使用"></a>在路由跳转前， 可以使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(to,from,next)=&gt;&#123;</span><br><span class="line">	…</span><br><span class="line">	If(to.meta.auth)&#123;&#125;   	//表示用户点击了博客链接</span><br><span class="line">	Next();    				//不调用next就会卡住</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue-Router"></a>Vue-Router</h2><p>首先，在vue-cli3 中，需要自己去创建一些文件，例如router目录下的index.js，<br>里面需要先引入vue和vue-router模块，还有需要的组件，这里组件是相对定位，且要加上后缀。<br>引用后还需要use一下router，再将router实例抛出<br><img src="/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/1-1.png" alt><br>在app.vue中记得使用 <router-view> 渲染路由组件<br><img src="/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/1-2.png" alt></router-view></p>
+<h2 id="动态路由参数"><a href="#动态路由参数" class="headerlink" title="动态路由参数"></a>动态路由参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xxxx.html&#x2F;user&#x2F;1  params	动态路由参数</span><br><span class="line">oooo.html&#x2F;user?userid&#x3D;1   	query</span><br></pre></td></tr></table></figure>
+<h4 id="动态路由参数以冒号开头"><a href="#动态路由参数以冒号开头" class="headerlink" title="动态路由参数以冒号开头"></a>动态路由参数以冒号开头</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Path:&#39;&#x2F;user&#x2F;:id&#39;, name:&#39;userP&#39;,component:&#39;userParams&#39;</span><br><span class="line">Path:&#39;&#x2F;user&#39;,name:&#39;userQ&#39;,component:&#39;userquery&#39;</span><br></pre></td></tr></table></figure>
+<h4 id="例如在template中"><a href="#例如在template中" class="headerlink" title="例如在template中"></a>例如在template中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to&#x3D;&quot;&#123;name:&#39;userP&#39;,params:&#123;id:1&#125;&#125;&quot;&gt;用户1&lt;&#x2F;router-link&gt;</span><br><span class="line">里面的id对应的是动态路由参数里的那个id</span><br><span class="line">&lt;router-link :to&#x3D;&quot;&#123;name:&#39;userQ&#39;,query:&#123;userid:1&#125;&#125;&quot;&gt;用户2&lt;&#x2F;router-link&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">routes:[&#123;</span><br><span class="line">	path:&#39;&#x2F;home&#39;,</span><br><span class="line">	name:&#39;home&#39;,</span><br><span class="line">	component:home,</span><br><span class="line">	children:[</span><br><span class="line">&#123;</span><br><span class="line">	Path:&#39;song&#39;,</span><br><span class="line">	Component:song</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">	Path:&#39;movie&#39;,</span><br><span class="line">	Component:movie</span><br><span class="line">&#125;</span><br><span class="line">]	</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<h5 id="一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作，-可以使用watch对路由的变化进行。"><a href="#一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作，-可以使用watch对路由的变化进行。" class="headerlink" title="一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作， 可以使用watch对路由的变化进行。"></a>一个路由对象下若有多个路由，那么就涉及到复用了，这时候要利用动态路由匹配，对子路由进行传参等操作， 可以使用watch对路由的变化进行。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Watch:&#123;</span><br><span class="line">	‘$route’(to,from)&#123;</span><br><span class="line">	This.msg &#x3D; to.params.id;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="在路由跳转前，-可以使用"><a href="#在路由跳转前，-可以使用" class="headerlink" title="在路由跳转前， 可以使用"></a>在路由跳转前， 可以使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(to,from,next)&#x3D;&gt;&#123;</span><br><span class="line">	…</span><br><span class="line">	If(to.meta.auth)&#123;&#125;   	&#x2F;&#x2F;表示用户点击了博客链接</span><br><span class="line">	Next();    				&#x2F;&#x2F;不调用next就会卡住</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteEnter  	在渲染该组件的对应路由被confirm前调用，不能获取组件this，因为当守卫执行前，组件实例还没被创建</span><br><span class="line">beforeRouteUpdate  	在当前路由改变，但是该组件被复用时调用</span><br><span class="line">beforeRouteLeave   	导航离开该组件的对应路由时调用  可以访问组件实例this</span><br></pre></td></tr></table></figure>
 <p>在方法里可以使用this.$router.push(‘/login’)  来跳转页面<br>在next()  里也可以写跳转   next({ path:’/login’ })</p>
 <p><code>用keep-alive把 router-view 包裹起来  可以缓存组件</code></p>
@@ -300,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://jojoduck.github.io/2019/08/19/Vue发送请求及使用路由/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://jojoduck.github.io/2019/08/19/Vue%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,7 +313,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/23/关于ES6的一些小结/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/23/%E5%85%B3%E4%BA%8EES6%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -324,7 +323,7 @@
     </a>
   
   
-    <a href="/2019/07/24/koa后端配置心得/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/24/koa%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE%E5%BF%83%E5%BE%97/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">koa后端配置心得</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -451,6 +450,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
@@ -467,15 +470,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Koa</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,10 +491,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">感悟</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javaScript</a>
               </li>
             
             <div class="clearfix"></div>
